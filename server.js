@@ -1,7 +1,8 @@
 const express = require('express');
 const connectDB = require('./db');
 const ejs = require('ejs');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const path = require('path');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const weatherRoutes = require('./routes/weather');
@@ -12,6 +13,8 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 app.set('view engine', 'ejs');
+
+app.set('views', path.join(process.cwd(), 'views'))
 
 app.use(express.static('static'));
 
